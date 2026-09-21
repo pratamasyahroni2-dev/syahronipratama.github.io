@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syahroni Pratama, S.E. - Portfolio Website</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- GLOBAL STYLES --- */
+        :root {
+            --bg-dark: #121214;
+            --card-bg: #1e1e24;
+            --accent-color: #00d26a;
+            --accent-hover: #00b359;
+            --text-main: #ffffff;
+            --text-muted: #a0a0ab;
+            --border-color: #2a2a32;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 210, 106, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 210, 106, 0.5);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- KEYFRAME ANIMATION DEFINITIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes floatImage {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* --- SCROLL REVEAL ANIMATION CLASSES --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: sticky;
+            top: 0;
+            background-color: rgba(18, 18, 20, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- HERO SECTION ANIMATED --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 0 60px 0;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .hero-text h3 {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero-text h4 {
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 540px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            animation: fadeInRight 1.2s ease-out forwards;
+        }
+
+        .img-wrapper {
+            width: 360px;
+            height: 480px;
+            border-radius: 35px;
+            border: 3px solid var(--accent-color);
+            background-color: var(--bg-dark);
+            box-shadow: 0 0 30px rgba(0, 210, 106, 0.3);
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            animation: floatImage 4s ease-in-out infinite 1.2s;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            mix-blend-mode: lighten;
+        }
+
+        .social-links {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            color: #000;
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px 15px;
+            border-radius: 14px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 210, 106, 0.2);
+        }
+
+        .skill-card img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover img {
+            transform: scale(1.15);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover i {
+            transform: scale(1.15);
+        }
+
+        .skill-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* --- PORTFOLIO PROJECT DESIGN & VIDEO EDITING SECTION --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 210, 106, 0.25);
+        }
+
+        .project-cover {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            background-color: #0b0b0d;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-cover img {
+            transform: scale(1.08);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(18, 18, 20, 0.85);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(5px);
+            z-index: 2;
+        }
+
+        .project-play-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 210, 106, 0.9);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            box-shadow: 0 4px 15px rgba(0, 210, 106, 0.4);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            z-index: 2;
+        }
+
+        .project-card:hover .project-play-icon {
+            transform: scale(1.15);
+            background-color: #ffffff;
+            color: var(--accent-color);
+        }
+
+        .project-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .project-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .project-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
+
+        .btn-ig {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px 0;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #fff;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-ig:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 39, 67, 0.4);
+        }
+
+        /* --- EXPERIENCE SECTION --- */
+        .timeline {
+            position: relative;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--accent-color);
+            transform: translateX(8px);
+            box-shadow: -5px 5px 20px rgba(0, 210, 106, 0.15);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .company-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
+            object-fit: cover;
+            background-color: #fff;
+            padding: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover .company-logo {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .timeline-company {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 2px;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.05);
+            padding: 5px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .timeline-body ul {
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .timeline-body li {
+            margin-bottom: 6px;
+        }
+
+        /* --- PRESTASI & ORGANISASI (GRID) --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .info-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .info-box:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .info-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+            color: var(--text-muted);
+        }
+
+        .info-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .info-list strong {
+            color: var(--text-main);
+        }
+
+        /* --- STYLING KHUSUS SEKSI DOKUMENTASI (LAYAR IKLAN DIGITAL BILLBOARD) --- */
+        .billboard-container {
+            position: relative;
+            max-width: 950px;
+            height: 520px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            background-color: #08080a;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 210, 106, 0.15);
+            transition: border-color 0.3s ease;
+        }
+
+        .billboard-container:hover {
+            border-color: var(--accent-color);
+        }
+
+        .billboard-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: scale(0.96);
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .billboard-slide.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .billboard-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 15px;
+        }
+
+        /* Overlay Keterangan Foto di Layar Iklan */
+        .billboard-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 10%, rgba(0, 0, 0, 0.6) 60%, transparent);
+            padding: 25px 30px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .billboard-caption-text h3 {
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .billboard-caption-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Tombol Navigasi Kiri / Kanan Layar Iklan */
+        .billboard-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(30, 30, 36, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .billboard-btn:hover {
+            background-color: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .billboard-btn.prev {
+            left: 20px;
+        }
+
+        .billboard-btn.next {
+            right: 20px;
+        }
+
+        /* Indikator Titik (Dots) */
+        .billboard-dots {
+            position: absolute;
+            bottom: 15px;
+            right: 30px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--accent-color);
+            width: 28px;
+            border-radius: 10px;
+        }
+
+        /* Badge Indikator "LIVE DISPLAY" */
+        .billboard-badge {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            background: rgba(0, 210, 106, 0.15);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        .billboard-badge span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-color);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* --- CTA BANNER --- */
+        .cta-box {
+            background: linear-gradient(135deg, #1e1e24 0%, #151518 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.3s;
+        }
+
+        .cta-box:hover {
+            border-color: var(--accent-color);
+        }
+
+        .cta-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .cta-text p {
+            color: var(--text-muted);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-text p {
+                margin: 0 auto 30px auto;
+            }
+            .img-wrapper {
+                width: 280px;
+                height: 380px;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .cta-box {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .nav-links {
+                display: none;
+            }
+            .timeline-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .billboard-container {
+                height: 360px;
+            }
+            .billboard-caption {
+                padding: 15px;
+            }
+            .billboard-caption-text h3 {
+                font-size: 1rem;
+            }
+            .billboard-caption-text p {
+                font-size: 0.8rem;
+            }
+            .billboard-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">My Portfolio<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#projects">Portfolio Karya</a></li>
+                <li><a href="#experience">Pengalaman</a></li>
+                <li><a href="#achievements">Prestasi</a></li>
+                <li><a href="#gallery">Dokumentasi</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="container hero" id="home">
+        <div class="hero-text">
+            <h3>Halo Semuanya,</h3>
+            <h1>Saya <span>Syahroni Pratama</span>, S.E.</h1>
+            <h4>Manajemen SDM & Operational Specialist</h4>
+            <p>
+                Lulusan Sarjana Manajemen dengan konsentrasi Manajemen SDM. Memiliki pengalaman kerja di bidang administrasi logistik, operasional media broadcast, serta kepemimpinan strategis organisasi tingkat daerah. Terampil dalam pengelolaan data, komunikasi publik, dan manajemen tim untuk efisiensi operasional organisasi.
+            </p>
+            <div>
+                <a href="mailto:pratamasyahroni2@gmail.com" class="btn btn-primary">Hubungi Saya</a>
+                <a href="#experience" class="btn btn-outline">Lihat Pengalaman</a>
+            </div>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/syahronipratama" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:pratamasyahroni2@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/6281545750341" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/syrh.prtma?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="img-wrapper">
+                <img src="Foto Saya.png" alt="Syahroni Pratama, S.E.">
+            </div>
+        </div>
+    </section>
+
+    <!-- KEAHLIAN / TOOLS & SKILLS SECTION -->
+    <section class="container reveal" id="skills">
+        <h2 class="section-title">Tools & Keahlian</h2>
+        <p class="section-subtitle">Kombinasi Hard Skill dan Soft Skill yang saya kuasai untuk mendukung kinerja profesional.</p>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <img src="Logo Excel.png" alt="MS Excel">
+                <h4>MS Excel</h4>
+            </div>
+            <div class="skill-card">
+                <img src="Logo Word.png" alt="MS Word">
+                <h4>MS Word</h4>
+            </div>
+            <div class="skill-card">
+                <img src="PowerPoint.png" alt="PowerPoint">
+                <h4>PowerPoint</h4>
+            </div>
+            <div class="skill-card">
+                <img src="Logo Photoshop.png" alt="Photoshop">
+                <h4>Photoshop</h4>
+            </div>
+            <div class="skill-card">
+                <img src="Logo Illustrator.png" alt="Illustrator">
+                <h4>Illustrator</h4>
+            </div>
+            <div class="skill-card">
+                <img src="Logo Affinity.jpg" alt="Affinity">
+                <h4>Affinity</h4>
+            </div>
+            <div class="skill-card">
+                <img src="Logo Capcut.png" alt="CapCut">
+                <h4>CapCut</h4>
+            </div>
+            <div class="skill-card">
+                <img src="Logo Filmora Fix.png" alt="Filmora">
+                <h4>Filmora</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-users-cog"></i>
+                <h4>HR Management</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-comments"></i>
+                <h4>Public Speaking</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO DESAIN & VIDEO EDITING SECTION -->
+    <section class="container reveal" id="projects">
+        <h2 class="section-title">Portfolio Desain & Video Editing</h2>
+        <p class="section-subtitle">Kumpulan karya kreatif pilihan yang terintegrasi langsung dengan feed & reels Instagram resmi.</p>
+
+        <div class="project-grid">
+            <!-- PROJECT 1: Craft Creative Poster -->
+            <div class="project-card">
+                <div class="project-cover">
+                    <img src="Craft Creative.png" alt="Cover Desain Craft Creative">
+                    <div class="project-badge"><i class="fas fa-palette"></i> Graphic Design</div>
+                </div>
+                <div class="project-info">
+                    <h3>Poster Creative & Broadcast Banner</h3>
+                    <p>Desain visual promosi interaktif dan komunikasi publik untuk campaign digital sosial media.</p>
+                    <a href="https://www.instagram.com/p/DcnQvD8gTK_/?stkn=c2RoZTBsdjJwcHBw" target="_blank" class="btn-ig">
+                        <i class="fab fa-instagram"></i> Lihat di Instagram
+                    </a>
+                </div>
+            </div>
+
+            <!-- PROJECT 2: Misi Secret Inspiration Poster -->
+            <div class="project-card">
+                <div class="project-cover">
+                    <img src="MIMI.webp" alt="Cover Poster Millenials Secret Inspiration">
+                    <div class="project-badge"><i class="fas fa-layer-group"></i> Visual Branding</div>
+                </div>
+                <div class="project-info">
+                    <h3>Visual Feed & Social Media Campaign</h3>
+                    <p>Desain poster branding kepemudaan edisi Millenials Secret Inspiration Batch 16.</p>
+                    <a href="https://www.instagram.com/p/DIYSmlLzM_s/?stkn=MWFqZ3F5ZWxjem55cw==" target="_blank" class="btn-ig">
+                        <i class="fab fa-instagram"></i> Lihat di Instagram
+                    </a>
+                </div>
+            </div>
+
+            <!-- PROJECT 3: Video Liputan Penduduk -->
+            <div class="project-card">
+                <div class="project-cover">
+                    <img src="Video 1.png" alt="Cover Video Short Documentary Liputan">
+                    <div class="project-badge"><i class="fas fa-video"></i> Video Reels</div>
+                    <div class="project-play-icon"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="project-info">
+                    <h3>Cinematic Reels & Highlight Event</h3>
+                    <p>Proses penyuntingan video dokumenter liputan masyarakat dengan color grading & audio matching tajam.</p>
+                    <a href="https://www.instagram.com/reel/DGiFbAKgE3C/?stkn=MW5vMDg1NmgxMnd2Ng==" target="_blank" class="btn-ig">
+                        <i class="fab fa-instagram"></i> Tonton Reels IG
+                    </a>
+                </div>
+            </div>
+
+            <!-- PROJECT 4: Video Intro Duta Inspirasi -->
+            <div class="project-card">
+                <div class="project-cover">
+                    <img src="Video 2.png" alt="Cover Video Animation Duta Inspirasi Indonesia">
+                    <div class="project-badge"><i class="fas fa-film"></i> Video Editing</div>
+                    <div class="project-play-icon"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="project-info">
+                    <h3>Short Form Video & Public Activity</h3>
+                    <p>Video intro animasi dan motion graphics "Youth In Action: Merayakan Kebudayaan" Duta Inspirasi Indonesia.</p>
+                    <a href="https://www.instagram.com/reel/DHp7sMmSr4l/?stkn=dHFxaGkyOHhieHNk" target="_blank" class="btn-ig">
+                        <i class="fab fa-instagram"></i> Tonton Reels IG
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PENGALAMAN KERJA SECTION -->
+    <section class="container reveal" id="experience">
+        <h2 class="section-title">Pengalaman Kerja & Magang</h2>
+        <p class="section-subtitle">Rekam jejak profesional saya di industri logistik, vendor support, dan broadcasting.</p>
+
+        <div class="timeline">
+            <!-- Item 1: J&T Express -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div class="company-info">
+                        <img src="Logo JnT.jpg" alt="J&T Express Logo" class="company-logo">
+                        <div>
+                            <h3 class="timeline-title">Admin Operational & Logistics</h3>
+                            <div class="timeline-company">J&T Express — Sintang</div>
+                        </div>
+                    </div>
+                    <span class="timeline-date">Jan 2026 – Apr 2026</span>
+                </div>
+                <div class="timeline-body">
+                    <ul>
+                        <li>Mengelola pendataan masuk dan keluarnya resi pengiriman harian dengan tingkat akurasi data tinggi.</li>
+                        <li>Melakukan rekonsiliasi data pengiriman harian serta mengoordinasikan jadwal alur distribusi paket bersama tim kurir operasional lapangan.</li>
+                        <li>Menangani keluhan dan pertanyaan pelanggan terkait status pengiriman secara cepat, efisien, dan profesional.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 2: PLN -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div class="company-info">
+                        <img src="Logo PLN.jpg" alt="PLN Logo" class="company-logo">
+                        <div>
+                            <h3 class="timeline-title">Vendor Support Project Staff</h3>
+                            <div class="timeline-company">PT Marir Geo Informindo — Pontianak</div>
+                        </div>
+                    </div>
+                    <span class="timeline-date">Jul 2023 – Ags 2023</span>
+                </div>
+                <div class="timeline-body">
+                    <ul>
+                        <li>Mendukung administrasi operasional proyek lapangan serta menyusun dan merapikan kelengkapan dokumentasi vendor.</li>
+                        <li>Memfasilitasi jalur komunikasi yang efektif antara teknisi lapangan dan manajemen perusahaan untuk memastikan target proyek tercapai.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 3: PonTV -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div class="company-info">
+                        <img src="Logo PonTV.jpg" alt="PonTV Logo" class="company-logo">
+                        <div>
+                            <h3 class="timeline-title">Master Control Room (MCR) Staff (Magang)</h3>
+                            <div class="timeline-company">Pontianak Televisi (PonTV) — Pontianak</div>
+                        </div>
+                    </div>
+                    <span class="timeline-date">Jan 2020 – Mar 2020</span>
+                </div>
+                <div class="timeline-body">
+                    <ul>
+                        <li>Memastikan kelancaran lalu lintas penyiaran tayangan televisi, penjadwalan iklan, dan pengawasan kualitas siaran (quality control).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRESTASI & ORGANISASI SECTION -->
+    <section class="container reveal" id="achievements">
+        <h2 class="section-title">Organisasi & Prestasi</h2>
+        <p class="section-subtitle">Pengalaman kepemimpinan serta penghargaan yang pernah didapatkan.</p>
+
+        <div class="info-grid">
+            <!-- Box Organisasi -->
+            <div class="info-box">
+                <h3><i class="fas fa-sitemap"></i> Pengalaman Organisasi</h3>
+                <ul class="info-list">
+                    <li><strong>Ketua Umum</strong> — Ikatan Mahasiswa Muhammadiyah (IMM) Kapuas Raya <em>(2026 – 2027)</em></li>
+                    <li><strong>Ketua Program</strong> — Millenials Menginspirasi Pontianak <em>(2025)</em></li>
+                    <li><strong>Staff Kementerian Pendidikan & Sosial Budaya</strong> — BEM UM Pontianak <em>(2024 – 2025)</em></li>
+                    <li><strong>Ketua Pengembangan Sumber Daya Manusia (PSDM)</strong> — PIK-M UM Pontianak <em>(2023 – 2024)</em></li>
+                    <li><strong>Koordinator Media Komunikasi</strong> — Kelompok Studi Pasar Modal (KSPM) UM Pontianak <em>(2022 – 2023)</em></li>
+                    <li><strong>PIC Kurikulum</strong> — Youth Aktual <em>(2026)</em></li>
+                </ul>
+            </div>
+
+            <!-- Box Penghargaan -->
+            <div class="info-box">
+                <h3><i class="fas fa-award"></i> Penghargaan & Prestasi</h3>
+                <ul class="info-list">
+                    <li><strong>Duta Pembicara Muda Indonesia</strong> — PT Duta Pembicara Muda Indonesia <em>(2026)</em></li>
+                    <li><strong>Duta Inspirasi Indonesia Delegasi Kalimantan Barat</strong> — Kemenpora RI <em>(2025)</em></li>
+                    <li><strong>Mister Grand Tourism Intelektual Kalimantan Barat</strong> — Angkasa Langit Production <em>(2023)</em></li>
+                    <li><strong>Runner Up 1 Duta Genre Kota Pontianak</strong> — BKKBN / Kemendukbangga <em>(2023)</em></li>
+                    <li><strong>Awardee Program Pembinaan Mahasiswa Wirausaha (P2MW)</strong> — Kemendikbudristek <em>(2023)</em></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKSI DOKUMENTASI (KONSEP LAYAR IKLAN DIGITAL - ROTASI 3 DETIK) -->
+    <section class="container reveal" id="gallery">
+        <h2 class="section-title">Galeri Dokumentasi</h2>
+        <p class="section-subtitle">Potret kegiatan kepemimpinan, organisasi, talkshow TV, dan pencapaian prestasi.</p>
+
+        <div class="billboard-container" id="billboard">
+            <!-- Badge Indikator Layar Iklan -->
+            <div class="billboard-badge">
+                <span></span> Showcase Display
+            </div>
+
+            <!-- Tombol Navigasi Manual -->
+            <button class="billboard-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+            <button class="billboard-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+
+            <!-- SLIDE 1: Fasil TLC -->
+            <div class="billboard-slide active">
+                <img src="Fasil TLC.jpg" alt="Talkshow Broadcast Morning News">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Talkshow Broadcast "Kopi Pagi - Morning News"</h3>
+                        <p>Dokumentasi siaran dan narasumber acara media televisi lokal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: TLC Di PonTV -->
+            <div class="billboard-slide">
+                <img src="TLC Di PonTV.png" alt="Talkshow Broadcast PonTV">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Talkshow Interactive Broadcast PonTV</h3>
+                        <p>Narasumber program siaran media interaktif UM Pontianak Official.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: RRI -->
+            <div class="billboard-slide">
+                <img src="RRI.jpg" alt="Dialog RRI Pro 2 Sintang">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Dialog Interactive RRI Pro 2 Sintang</h3>
+                        <p>Narasumber Acara NBS (Nongkrong Bareng Sidak) bersama RRI Pro 2.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: Sambutan DAD -->
+            <div class="billboard-slide">
+                <img src="Sambutan DAD.JPG" alt="Sambutan Ketua Umum IMM Kapuas Raya">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Sambutan Pembukaan Darul Arqam Dasar</h3>
+                        <p>Ketua Umum IMM Kapuas Raya menyampaikan pidato kepemimpinan organisasi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: Foto Bersama SMA Muh PTK -->
+            <div class="billboard-slide">
+                <img src="Foto Bersama SMA Muh PTK.JPG" alt="Duta Inspirasi Goes to School">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Duta Inspirasi Goes to School</h3>
+                        <p>Foto bersama tim dan peserta kegiatan sosialisasi kepemudaan Kalbar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: SMA Muh PTK -->
+            <div class="billboard-slide">
+                <img src="SMA Muh PTK.JPG" alt="Presentation Duta Inspirasi Kalbar">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Presentation & Youth Empowerment</h3>
+                        <p>Penyampaian materi motivasi kepemudaan sebagai Duta Inspirasi Kalbar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 7: Ibnu Khaldun -->
+            <div class="billboard-slide">
+                <img src="Ibnu Khaldun.jpg" alt="Dokumentasi Organisasi IMM">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Kegiatan & Konsolidasi Organisasi IMM</h3>
+                        <p>Momentum kepemimpinan dan kaderisasi organisasi mahasiswa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 8: Materi DAD -->
+            <div class="billboard-slide">
+                <img src="Materi DAD.jpeg" alt="Pemateri Darul Arqam">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Pemateri Darul Arqam Dasar IMM</h3>
+                        <p>Memberikan materi kepemimpinan dan Kemuhammadiyahan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 9: KSPM -->
+            <div class="billboard-slide">
+                <img src="KSPM.jpg" alt="KSPM Pasar Modal">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>KSPM Pasar Modal UM Pontianak</h3>
+                        <p>Koordinator Media Komunikasi dan kegiatan finansial mahasiswa.</p>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- SLIDE 10: MMGTI -->
+            <div class="billboard-slide">
+                <img src="Catwalk MMGTI.webp" alt="MMGTI Kalbar">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Fashion Show & Cultural</h3>
+                        <p>Penampilan budaya lokal dan atraksi catwalk dalam ajang Mister Grand Tourism Indonesia Kalimantan Barat.</p>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- SLIDE 11: PPKRN -->
+            <div class="billboard-slide">
+                <img src="Catwalk PPRKN.jpg" alt="PPKRN Kalbar">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Pentas Kebudayaan Remaja Nusantara</h3>
+                        <p>Unjuk bakat dan peragaan busana adat Nusantara dalam gelaran peringatan HUT RI ke-78.</p>
+                    </div>
+                </div>
+            </div>
+
+                    <!-- SLIDE 12: ALpro -->
+            <div class="billboard-slide">
+                <img src="Kegiatan Rusunawa.webp" alt="ALproduction">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Program Pengabdian Masyarakat</h3>
+                        <p>Kegiatan pengabdian sosial dan kebersamaan anak-anak di rusunawa.</p>
+                    </div>
+                </div>
+            </div>
+
+                           <!-- SLIDE 13: Kunjungan SMPN 2 Kelam Permai -->
+            <div class="billboard-slide">
+                <img src="Kegiatan SMPN 2 Kelam.JPG" alt="Kolaborasi Kegiatan MMGTI Dan Budara Gawai">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Kegiatan Edukasi & Sosialisasi Di Sekolah</h3>
+                        <p>Sesi interaksi dan penyuluhan edukatif bersama para siswa-siswi.</p>
+                    </div>
+                </div>
+            </div>
+
+                             <!-- SLIDE 14: BYC Kalbar -->
+            <div class="billboard-slide">
+                <img src="Borneo Youth Camp.webp" alt="Borneo Youth Campt">
+                <div class="billboard-caption">
+                    <div class="billboard-caption-text">
+                        <h3>Borneo Youth Campt</h3>
+                        <p>Kegiatan Kepemudaan berbasis international dari berbagai negara.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indikator Titik (Dots) -->
+            <div class="billboard-dots" id="dotsContainer"></div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="container reveal" id="contact">
+        <div class="cta-box">
+            <div class="cta-text">
+                <h2>Tertarik Bermitra atau Bekerja Sama?</h2>
+                <p>Saya selalu terbuka untuk peluang karir di bidang SDM, Operasional, & Manajemen.</p>
+            </div>
+            <div>
+                <a href="mailto:pratamasyahroni2@gmail.com" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Kirim Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Syahroni Pratama, S.E. All Rights Reserved.</p>
+            <p style="margin-top: 5px; font-size: 0.8rem; color: #666;">Pontianak / Sintang, Kalimantan Barat | 081545750341</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT UNTUK SCROLL REVEAL & LAYAR IKLAN DOKUMENTASI -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            /* --- SCROLL REVEAL ANIMATION --- */
+            const reveals = document.querySelectorAll(".reveal");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            reveals.forEach((reveal) => {
+                observer.observe(reveal);
+            });
+
+            /* --- KONSEP LAYAR IKLAN (SHOWROOM BILLBOARD 3 DETIK) --- */
+            const slides = document.querySelectorAll(".billboard-slide");
+            const dotsContainer = document.getElementById("dotsContainer");
+            const prevBtn = document.getElementById("prevBtn");
+            const nextBtn = document.getElementById("nextBtn");
+            const billboard = document.getElementById("billboard");
+
+            let currentIndex = 0;
+            let slideInterval;
+
+            // Generate titik indikator secara dinamis
+            slides.forEach((_, index) => {
+                const dot = document.createElement("div");
+                dot.classList.add("dot");
+                if (index === 0) dot.classList.add("active");
+                dot.addEventListener("click", () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = document.querySelectorAll(".dot");
+
+            function updateSlides() {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove("active");
+                    dots[index].classList.remove("active");
+                });
+                slides[currentIndex].classList.add("active");
+                dots[currentIndex].classList.add("active");
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlides();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlides();
+            }
+
+            function goToSlide(index) {
+                currentIndex = index;
+                updateSlides();
+            }
+
+            // Jalankan rotasi bergantian otomatis setiap 3 detik (3000 ms)
+            function startAutoPlay() {
+                slideInterval = setInterval(nextSlide, 3000);
+            }
+
+            function stopAutoPlay() {
+                clearInterval(slideInterval);
+            }
+
+            // Event Navigasi Tombol
+            nextBtn.addEventListener("click", () => {
+                stopAutoPlay();
+                nextSlide();
+                startAutoPlay();
+            });
+
+            prevBtn.addEventListener("click", () => {
+                stopAutoPlay();
+                prevSlide();
+                startAutoPlay();
+            });
+
+            // Pause pergantian layar saat kursor berada di atas layar iklan
+            billboard.addEventListener("mouseenter", stopAutoPlay);
+            billboard.addEventListener("mouseleave", startAutoPlay);
+
+            // Inisialisasi Autoplay
+            startAutoPlay();
+        });
+    </script>
+</body>
+</html>
